@@ -73,7 +73,15 @@ merge的逻辑是，把给定分支合并到当前分支，实现时候需要先
         - 该文件在分割点处不存在，并且在给定分支和当前分支中具有不同的内容。
     - 在这种情况下，将冲突文件的内容替换为特定的冲突标记格式（原文此处未完全列出具体格式，通常为 `<<<<<<<`, `=======`, `>>>>>>>` 等）。
 如果要实现这个合并逻辑，我们需要五个boolean 变量来完成这个合并逻辑：分别是splitPointExists，modifiedInCurrent，modifiedInGiven，existsInCurrent，existsInGiven
-splitPointExists:return True if the file exist in spilitPoint
+splitPointExists:return true if the file exist in spilitPoint otherwise false
+modifiedInCurrent: return true if the file in current branch is difference with the spilitPoint otherwise false;
+modifiedInGiven: return true if the file in given branch is difference with the spilitPoint otherwise false;
+existsInCurrent: return true if the file in currentBranch(the newest commit in the current branch)
+existsInGiven: return true if the file in givenBranch;
+之后通过一个boolean表格(9 x 7表格)(row,column)来表明各路逻辑。
+merge功能是这些所有功能的一大难点，也是我花了很久才实现完毕的功能。
 2.checkout 功能的实现
 chenout包含三种功能
 
+### 项目出自
+(project 2 from cs61B) [https://sp21.datastructur.es/materials/proj/proj2/proj2]
