@@ -33,6 +33,7 @@ SHA-1 ハッシュ によるコンテンツアドレス方式。
 
 ### More message
 [詳細設計ドキュメントを見る](https://github.com/slayme422/Gitlet-Project/blob/main/gitlet-design.md)
+
 [プロジェクト出典](https://sp21.datastructur.es/materials/proj/proj2/proj2)
 
 # Gitlet
