@@ -42,3 +42,11 @@ merge
 # 如何使用Gitlet?
 1.你需要先在父目录(gitlet的父目录)打开终端，输入javac gitlet/*.java(将所有的文件编译一边)
 2.之后通过入java gitlet.Main [init]就可以开始使用
+
+### 4.算法与难点实现
+挑选 2-3 个最值得说的技术难点：
+1.commit 功能的实现
+commit在实现的时候需要清楚了解
+2.checkout 功能的实现
+chenout包含三种功能
+3.merge的实现
