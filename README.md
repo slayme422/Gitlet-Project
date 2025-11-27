@@ -1,66 +1,92 @@
 # Gitlet
+### Gitletとは？
+
+Gitletは CS61B（UC Berkeleyのデータ構造とアルゴリズム）のGitletプロジェクト に触発されたものです。
+これは授業用のプロジェクトで、Gitの基本的な機能の一部を模倣した簡易的なバージョン管理システムを実装しています。
+
+### プロジェクト概要 / 私の貢献
+
+このプロジェクトの完成には 約1.5か月 かかりました。
+Commit、Blob、Repository クラスなどのコアコンポーネントはすべて私自身が実装しました。
+
+このプロジェクトを通じて次のことを学びました：
+
+高レベル抽象化：複数の相互作用するコンポーネントを設計。
+
+データ永続化：コミットやブロブを効率的にディスク上に保存。
+
+正確なGit風の動作：add、commit、checkout、branch、merge、reset などの主要なバージョン管理操作を実装。
+
+Gitlet の親ディレクトリでターミナルを開き、すべてのファイルをコンパイルします:
+
+javac gitlet/*.java
+
+### Gitletの使い方
+Gitlet を起動するには:
+
+java gitlet.Main [init]
+このプロジェクトを完成させることで、ソフトウェア設計、オブジェクト指向プログラミング、およびバージョン管理ワークフローにおける複雑なエッジケースの処理について実践的な経験を得ました。
+
+### アルゴリズムと実装上の課題
+#### コミットグラフの探索
+BFS を使用してマージベースを検索。
+深さ優先探索 でコミット履歴を表示。
+再帰的バックトラッキング でブランチマージの競合を解決。
+
+#### データストレージ
+
+SHA-1 ハッシュ によるコンテンツアドレス方式。
+オブジェクトのシリアライズ / デシリアライズ による永続化。
+スナップショット方式の保存（差分保存ではない）。
+
+#### マージ戦略
+三者マージ（Three-way merge） アルゴリズム。
+最近共通祖先 に基づく競合検出。
+
+### More message
+
+[詳細設計ドキュメントを見る](https://github.com/slayme422/Gitlet-Project/blob/main/gitlet-design.md)
+
+[プロジェクト出典](https://sp21.datastructur.es/materials/proj/proj2/proj2)
+
+# Gitlet
 ### what is gitlet?
-Gitlet is a lesson project from cs61B Data Structures and Algorithms of the UC Berkerly. Gitlet is a version-control system that mimics some of the basic features of the popular system Git. 
+Originally inspired by CS61B <Data Structures and Algorithms of the UC Berkerly> Gitlet project.Gitlet is a lesson project from cs61B. Gitlet is a version-control system that mimics some of the basic features of the popular system Git. 
 
 ### workthrough
-I nearly spent 1.5 month completing this project, 这个项目考察了高度抽象化，数据持久化，精确的Git的业务逻辑，
+I spent about 1.5 months completing this project.
+All core components—including the Commit, Blob, Repository classes were entirely implemented by me.
 
-## Classes and Data Structures
+### This project demonstrates:
 
-### Commit
+High-level abstraction: designing a system with multiple interacting components.
+Data persistence: storing commits and blobs efficiently on disk.
+Accurate Git-like behavior: implementing key version-control operations such as add, commit, checkout, branch, merge, and reset.
+By completing this project, I gained hands-on experience in software design, object-oriented programming, and handling complex edge cases in version-control workflows.
 
-#### Instance Variables
+### How to Use Gitlet
+Open a terminal in the parent directory of Gitlet, and compile all files:
+javac gitlet/*.java
+Run Gitlet using:
+java gitlet.Main [init]
 
-### Repository
+### Algorithms and Implementation Challenges
+#### Commit Graph Traversal
+Use BFS to find the merge base.
+Display commit history using depth-first traversal.
+Resolve branch merge conflicts with recursive backtracking.
 
-#### Instance Variables
+#### Data Storage
+SHA-1 hashing for content-addressable storage.
+Serialization / deserialization for object persistence.
+Snapshot-based storage instead of delta storage.
 
-1. Head - 指的是Commit的最新状态
-2. master- 是一个分支名，本质上是指向某个 commit 的 指针，表示这个分支的最新 commit。
-3. GITLET_DIR-GITLET的文件夹
-4. COMMITS_DIR-COMMITS的文件夹
-5. BLOBS_DIR-BLOBS的文件夹
-6. AddStagingArea-添加暂存区，任何添加的东西都要往这里添加
-7. RemoveStagingArea-删除暂存区
+#### Merge Strategy
+Three-way merge algorithm.
+Conflict detection based on nearest common ancestor.
+See detailed design document
+Project Origin
 
-包含以下功能
-init-会在本地创建一个.gitlet的隐藏文件夹，就如同git的逻辑一样
-add
-commit
-log
-rm
-global-log
-find
-status
-checkout
-branch
-rm-branch
-reset 
-merge
-以上所有功能的实现
-
-# 如何使用Gitlet?
-1.你需要先在父目录(gitlet的父目录)打开终端，输入javac gitlet/*.java(将所有的文件编译一边)
-2.之后通过入java gitlet.Main [init]就可以开始使用
-
-### 4.算法与难点实现
-## 核心算法
-
-### 提交图遍历
-- 使用 **BFS** 查找合并基准(merge base)
-- 基于 **深度优先** 的提交历史显示
-- **递归回溯** 解决分支合并冲突
-
-### 数据存储
-- **SHA-1 哈希** 内容寻址
-- **序列化/反序列化** 对象持久化
-- **快照式存储** 而非差异存储
-
-### 合并策略
-- **三方合并** 算法
-- 基于 **最近公共祖先** 的冲突检测
-
-[查看详细设计文档](https://github.com/slayme422/Gitlet-Project/blob/main/gitlet-design.md)
-
-### 项目出自
--[project 2 from cs61B](https://sp21.datastructur.es/materials/proj/proj2/proj2)
+### More message
+- [design.md](https://github.com/slayme422/Gitlet-Project/blob/main/gitlet-design.md)
+-[gitlet from CS61B](https://github.com/slayme422/Gitlet-Project/blob/main/gitlet-design.md)
