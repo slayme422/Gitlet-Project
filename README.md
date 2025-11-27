@@ -84,4 +84,4 @@ merge功能是这些所有功能的一大难点，也是我花了很久才实现
 chenout包含三种功能
 
 ### 项目出自
-(project 2 from cs61B) [https://sp21.datastructur.es/materials/proj/proj2/proj2]
+-[project 2 from cs61B](https://sp21.datastructur.es/materials/proj/proj2/proj2)
